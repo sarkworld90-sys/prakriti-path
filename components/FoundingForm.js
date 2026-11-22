@@ -78,13 +78,13 @@ export default function FoundingForm() {
 
       if (res.status === 409) {
         setStatus("done");
-        setMessage("आप पहले से प्रकृति पथ से जुड़े हुए हैं। 🌱");
+        setMessage("आपका पंजीकरण पहले से हमारे पास है। 🌱 प्रकृति पथ की टीम जल्द ही आपसे संपर्क करेगी।");
         return;
       }
       if (!res.ok) throw new Error(await res.text());
 
       setStatus("done");
-      setMessage(`धन्यवाद, ${form.name.trim()}! आप प्रकृति पथ के Founding Member बन गए हैं। 🌱`);
+      setMessage(`धन्यवाद, ${form.name.trim()}! 🙏 आपका पंजीकरण प्राप्त हो गया है। प्रकृति पथ की टीम जल्द ही आपसे संपर्क करेगी।`);
     } catch (err) {
       console.error(err);
       fail("कुछ गड़बड़ हुई। कृपया थोड़ी देर बाद फिर कोशिश करें।");
@@ -96,7 +96,10 @@ export default function FoundingForm() {
       <div className="join-card join-done">
         <div className="join-done-icon">🌱</div>
         <h3 className="serif">{message}</h3>
-        <p>जैसे ही 30 दिनों की यात्रा शुरू होगी, हम आपसे संपर्क करेंगे।</p>
+        <p>तब तक आप चाहें तो Google से Login करके आज के प्रश्न से अपनी यात्रा शुरू कर सकते हैं।</p>
+        <a href="/login" className="btn btn-primary" style={{ marginTop: 16 }}>
+          आज का प्रश्न देखें →
+        </a>
       </div>
     );
   }
