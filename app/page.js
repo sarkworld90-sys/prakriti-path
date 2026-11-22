@@ -29,9 +29,14 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <a href="#judein" className="btn btn-primary">
-            Founding Member बनें
-          </a>
+          <div className="header-actions">
+            <a href="/login" className="btn btn-outline">
+              Login
+            </a>
+            <a href="#judein" className="btn btn-primary">
+              Founding Member बनें
+            </a>
+          </div>
         </div>
       </header>
 
@@ -44,7 +49,7 @@ export default function Home() {
             <p className="hero-tagline serif">{site.tagline}</p>
             <p className="hero-intro">{site.intro}</p>
             <div className="hero-actions">
-              <a href="#aaj-ka-prashn" className="btn btn-primary">
+              <a href="/login" className="btn btn-primary">
                 अपनी यात्रा शुरू करें →
               </a>
               <a href="#yatra" className="btn btn-outline">
@@ -131,7 +136,7 @@ export default function Home() {
               ))}
             </div>
             <div className="journey-cta">
-              <a href="#aaj-ka-prashn" className="btn btn-haldi">
+              <a href="/login" className="btn btn-haldi">
                 दिन 1 से शुरू करें
               </a>
             </div>
@@ -224,6 +229,10 @@ export default function Home() {
             <div>
               <p>संस्थापक: {site.founder}</p>
               <p>{site.website}</p>
+              <div className="footer-links">
+                <a href="/privacy">गोपनीयता नीति</a>
+                <a href="/terms">उपयोग की शर्तें</a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">

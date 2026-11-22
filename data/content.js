@@ -8,6 +8,8 @@ export const site = {
   intro: "स्वयं को समझने, जीवन को पहचानने और अपनी दिशा खोजने की एक यात्रा।",
   founder: "अमरेश कुमार रुद्र",
   website: "prakritipath.org",
+  // ⚠️ अपना असली संपर्क ईमेल यहाँ लिखें
+  contactEmail: "contact@prakritipath.org",
 };
 
 export const navLinks = [
