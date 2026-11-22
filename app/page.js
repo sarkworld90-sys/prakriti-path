@@ -1,6 +1,7 @@
 import HeroPath from "@/components/HeroPath";
 import TodayQuestion from "@/components/TodayQuestion";
 import FoundingForm from "@/components/FoundingForm";
+import { SocialLinks, FounderSection, Gallery, ContactSection, WhatsAppFloat, KatoriPani } from "@/components/Extras";
 import {
   site,
   navLinks,
@@ -10,6 +11,7 @@ import {
   circles,
   books,
   programs,
+  contact,
 } from "@/data/content";
 
 export default function Home() {
@@ -19,7 +21,7 @@ export default function Home() {
       <header className="header">
         <div className="container header-inner">
           <a href="#" className="logo serif">
-            <span className="logo-mark">प</span>
+            <img src="/images/logo-mark.webp" alt="" className="logo-img" />
             {site.name}
           </a>
           <nav className="nav">
@@ -104,6 +106,8 @@ export default function Home() {
           </div>
         </section>
 
+        <FounderSection />
+
         {/* ===== Section 4: आज का प्रश्न ===== */}
         <section className="section question-wrap" id="aaj-ka-prashn">
           <div className="container">
@@ -143,6 +147,8 @@ export default function Home() {
           </div>
         </section>
 
+        <KatoriPani />
+
         {/* ===== Section 6: समुदाय ===== */}
         <section className="section" id="samuday" style={{ paddingTop: 0 }}>
           <div className="container">
@@ -165,6 +171,8 @@ export default function Home() {
           </div>
         </section>
 
+        <Gallery />
+
         {/* ===== Section 7: पुस्तकें और कार्यक्रम ===== */}
         <section className="section books-wrap" id="pustakein">
           <div className="container">
@@ -174,15 +182,39 @@ export default function Home() {
               <div>
                 <h3 className="col-title">पुस्तकें</h3>
                 <div className="book-row">
-                  {books.map((b) => (
-                    <div className="book" key={b.subtitle}>
-                      <div>
-                        <div className="t serif">{b.title}</div>
-                        <div className="s">{b.subtitle}</div>
+                  {books.map((b) => {
+                    const cover = b.image ? (
+                      <img src={b.image} alt={`${b.title} — ${b.subtitle}`} className="book book-img" />
+                    ) : (
+                      <div className="book">
+                        <div>
+                          <div className="t serif">{b.title}</div>
+                          <div className="s">{b.subtitle}</div>
+                        </div>
+                        <div className="a">{site.founder}</div>
                       </div>
-                      <div className="a">{site.founder}</div>
-                    </div>
-                  ))}
+                    );
+                    return (
+                      <div key={b.subtitle} className="book-link">
+                        {b.link ? (
+                          <a href={b.link} target="_blank" rel="noopener noreferrer">
+                            {cover}
+                          </a>
+                        ) : (
+                          cover
+                        )}
+                        {b.buy?.length > 0 && (
+                          <div className="book-buy">
+                            {b.buy.map((l) => (
+                              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
+                                {l.label} पर खरीदें
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div>
@@ -213,6 +245,7 @@ export default function Home() {
             <FoundingForm />
           </div>
         </section>
+        <ContactSection />
       </main>
 
       {/* ===== Footer ===== */}
@@ -221,14 +254,21 @@ export default function Home() {
           <div className="footer-inner">
             <div>
               <div className="logo serif">
-                <span className="logo-mark">प</span>
+                <img src="/images/logo-mark.webp" alt="" className="logo-img" />
                 {site.name}
               </div>
               <p style={{ marginTop: 10 }}>{site.tagline}</p>
             </div>
             <div>
               <p>संस्थापक: {site.founder}</p>
+              {contact.phone && <p>📞 {contact.phone}</p>}
+              {contact.email && (
+                <p>
+                  ✉️ <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </p>
+              )}
               <p>{site.website}</p>
+              <SocialLinks light />
               <div className="footer-links">
                 <a href="/privacy">गोपनीयता नीति</a>
                 <a href="/terms">उपयोग की शर्तें</a>
@@ -240,6 +280,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <WhatsAppFloat />
     </>
   );
 }

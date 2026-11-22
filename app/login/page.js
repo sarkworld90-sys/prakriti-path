@@ -38,7 +38,7 @@ export default function LoginPage() {
     <main className="auth-page">
       <div className="auth-card">
         <a href="/" className="logo serif auth-logo">
-          <span className="logo-mark">प</span>
+          <img src="/images/logo-mark.webp" alt="" className="logo-img" />
           {site.name}
         </a>
         <h1 className="serif">अपनी यात्रा में आपका स्वागत है</h1>

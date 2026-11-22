@@ -317,3 +317,129 @@ img { max-width: 100%; display: block; }
 .footer-links { display: flex; gap: 18px; margin-top: 8px; }
 .footer-links a { text-decoration: underline; }
 .auth-privacy a { color: var(--van-soft); text-decoration: underline; }
+
+/* ===== Social ===== */
+.social-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.social-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: #fffaf0; color: var(--van); font-weight: 600; font-size: 15px; transition: transform .15s; }
+.social-pill:hover { transform: translateY(-2px); border-color: var(--van); }
+.social-light .social-pill { background: rgba(255,255,255,.06); border-color: rgba(246,240,228,.25); color: var(--mitti); }
+.footer a { text-decoration: none; }
+.footer .social-row { margin-top: 14px; }
+
+/* ===== Founder ===== */
+.founder { display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center; }
+.founder-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 28px;
+  box-shadow: 0 30px 60px -30px rgba(31,61,43,.5); border: 6px solid #fffaf0; }
+.founder-title { color: var(--haldi); font-weight: 600; margin-bottom: 18px; }
+.founder-bio { color: var(--syahi-soft); margin-bottom: 14px; }
+
+/* ===== Gallery ===== */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.gallery-item { margin: 0; border-radius: var(--radius); overflow: hidden; background: #fffaf0; border: 1px solid var(--line); }
+.gallery-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .4s; }
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-item figcaption { padding: 12px 16px; font-size: 15px; color: var(--syahi-soft); }
+
+/* ===== Books with image ===== */
+.book-link { flex: 1; display: block; }
+.book-link .book { height: 100%; }
+.book-img { width: 100%; aspect-ratio: 2/3; object-fit: cover; padding: 0; }
+
+/* ===== Contact ===== */
+.contact-wrap { background: var(--mitti-dark); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 36px; }
+.contact-card { display: flex; gap: 14px; align-items: center; padding: 20px; border-radius: var(--radius);
+  background: #fffaf0; border: 1px solid var(--line); transition: transform .15s; }
+a.contact-card:hover { transform: translateY(-2px); border-color: var(--van); }
+.contact-icon { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: var(--haldi-soft);
+  display: grid; place-items: center; font-size: 22px; }
+.contact-label { display: block; font-size: 14px; color: var(--patti); font-weight: 600; }
+.contact-value { display: block; color: var(--van); font-weight: 600; word-break: break-word; }
+
+/* ===== Floating WhatsApp ===== */
+.wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 60px; height: 60px; border-radius: 50%;
+  background: #25d366; color: #fff; display: grid; place-items: center; font-size: 28px;
+  box-shadow: 0 10px 24px -8px rgba(0,0,0,.4); transition: transform .15s; }
+.wa-float:hover { transform: scale(1.08); }
+
+@media (max-width: 960px) {
+  .founder { grid-template-columns: 1fr; gap: 28px; }
+  .founder-photo { max-width: 320px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+.founder-mono { display: grid; place-items: center; background: var(--van); color: var(--haldi-soft);
+  font-size: 140px; font-weight: 700; }
+.founder-quote { margin-top: 22px; font-size: 22px; color: var(--van); border-left: 4px solid var(--haldi); padding-left: 16px; }
+
+/* ===== Logo image ===== */
+.logo-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.auth-logo .logo-img { width: 44px; height: 44px; }
+
+/* ===== Founder cutout ===== */
+.founder-cutout { width: 100%; max-width: 360px; height: auto; filter: drop-shadow(0 24px 30px rgba(31,61,43,.28)); }
+
+/* ===== Gallery (masonry posters) — overrides ===== */
+.gallery-grid { display: block; columns: 3 280px; column-gap: 18px; }
+.gallery-item { display: block; break-inside: avoid; margin: 0 0 18px; padding: 0; }
+.gallery-item img { aspect-ratio: auto; height: auto; object-fit: initial; display: block; }
+.gallery-item:hover img { transform: scale(1.02); }
+
+/* ===== एक कटोरी पानी ===== */
+.katori { background: linear-gradient(160deg, var(--van) 0%, #2a5a3c 100%); color: var(--mitti); position: relative; overflow: hidden; }
+.katori .section-title { color: var(--mitti); margin-bottom: 4px; }
+.katori-head { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.katori-emoji { width: 120px; height: 120px; border-radius: 50%; background: rgba(243,223,184,.15);
+  border: 2px dashed rgba(243,223,184,.5); display: grid; place-items: center; font-size: 56px; position: relative; flex-shrink: 0; }
+.katori-emoji span { position: absolute; bottom: 14px; right: 14px; font-size: 30px; }
+.katori-tagline { font-size: clamp(20px, 2.6vw, 26px); color: var(--haldi-soft); }
+.katori-appeal { max-width: 820px; margin-top: 28px; }
+.katori-appeal p { color: #d8e2d3; margin-bottom: 14px; font-size: 18px; }
+.katori-sub { font-size: 26px; color: var(--haldi-soft); margin: 36px 0 18px; }
+.katori-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.katori-step { background: rgba(255,255,255,.06); border: 1px solid rgba(246,240,228,.15); border-radius: var(--radius);
+  padding: 22px 18px; position: relative; }
+.katori-num { position: absolute; top: 12px; right: 14px; font-size: 13px; font-weight: 700; color: var(--haldi); }
+.katori-icon { font-size: 34px; display: block; margin-bottom: 8px; }
+.katori-step h4 { font-size: 18px; color: var(--mitti); font-family: var(--font-heading), serif; margin-bottom: 6px; }
+.katori-step p { font-size: 15px; color: #c9d4c4; line-height: 1.6; }
+.katori-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+.btn-outline-light { border-color: var(--mitti); color: var(--mitti); background: transparent; }
+.btn-outline-light:hover { background: rgba(246,240,228,.1); }
+@media (max-width: 1000px) { .katori-steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .katori-steps { grid-template-columns: 1fr; } .katori-emoji { width: 90px; height: 90px; font-size: 42px; } }
+.book-link .book { height: auto; aspect-ratio: 2/3; }
+.book-buy { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.book-buy a { display: block; text-align: center; font-size: 13px; font-weight: 600; padding: 6px 8px; border-radius: 999px;
+  background: var(--haldi); color: #fff; }
+.book-buy a:hover { background: #c47f1d; }
+.book-row { align-items: flex-start; }
+
+/* ===== Founding form: chips & interests ===== */
+.join-field { border: none; padding: 0; margin: 0 0 22px; }
+.join-field legend { font-size: 15px; font-weight: 600; color: var(--van); margin-bottom: 10px; }
+.join-field legend small { font-weight: 400; color: var(--syahi-soft); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--mitti);
+  font-family: inherit; font-size: 15px; color: var(--syahi); cursor: pointer; }
+.chip-on { background: var(--van); border-color: var(--van); color: var(--mitti); }
+.interest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.interest { display: flex; align-items: center; gap: 10px; text-align: left; padding: 12px 14px; border-radius: 14px;
+  border: 1px solid var(--line); background: var(--mitti); font-family: inherit; font-size: 15px; color: var(--syahi);
+  cursor: pointer; line-height: 1.4; }
+.interest:hover { border-color: var(--patti); }
+.interest-on { background: #e7efe0; border-color: var(--van); color: var(--van); font-weight: 600; }
+.interest-check { width: 20px; height: 20px; flex-shrink: 0; border-radius: 6px; border: 2px solid var(--line);
+  display: grid; place-items: center; font-size: 13px; color: #fff; background: #fff; }
+.interest-on .interest-check { background: var(--van); border-color: var(--van); }
+.interest-icon { font-size: 20px; }
+.join-message { display: block; margin-bottom: 18px; }
+.join-message span { display: block; font-size: 15px; font-weight: 600; color: var(--van); margin-bottom: 6px; }
+.join-message textarea { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--mitti); font-family: inherit; font-size: 16px; color: var(--syahi); resize: vertical; }
+.join-message textarea:focus { outline: 2px solid var(--patti); border-color: transparent; }
+.join-consent a { color: var(--van-soft); text-decoration: underline; }
+@media (max-width: 600px) { .interest-grid { grid-template-columns: 1fr; } }

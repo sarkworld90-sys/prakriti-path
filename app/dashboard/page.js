@@ -147,7 +147,7 @@ export default function Dashboard() {
       <header className="header">
         <div className="container header-inner">
           <a href="/" className="logo serif">
-            <span className="logo-mark">प</span>
+            <img src="/images/logo-mark.webp" alt="" className="logo-img" />
             {site.name}
           </a>
           <div className="dash-user">
