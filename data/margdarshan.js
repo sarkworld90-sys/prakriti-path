@@ -2,10 +2,10 @@
 
 export const contact = {
   // WhatsApp नंबर (देश कोड के साथ, बिना + के), जैसे "919876543210"। खाली रहेगा तो WhatsApp बटन नहीं दिखेगा।
-  whatsapp: "",
+  whatsapp: "918797617430",
   email: "prakritipathpp@gmail.com",
   // अपनी फोटो public/ फ़ोल्डर में रखें और नाम यहाँ लिखें, जैसे "/amresh.jpg"
-  guidePhoto: "",
+  guidePhoto: "/images/founder.webp",
 };
 
 // शुल्क कैसे भरें:
@@ -100,8 +100,8 @@ export const PROGRAMS = [
 export const book = {
   title: "प्रकृति पथ",
   subtitle: "अपनी प्रकृति, अपना जीवन पथ",
-  amazon: "",
-  flipkart: "",
+  amazon: "https://www.amazon.in/Prakriti-Path-Apni-Apna-Jeevan/dp/9347263729",
+  flipkart: "https://www.flipkart.com/prakriti-path-apni-apna-jeevan/p/itmba3c807d22d37",
   // पुस्तक में छापने के लिए QR इसी लिंक का बनेगा
   qrLink: "https://prakritipath.org/margdarshan?src=book",
 };

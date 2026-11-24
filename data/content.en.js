@@ -13,10 +13,11 @@ export const site = {
 export const navLinks = [
   { label: "About", href: "#parichay" },
   { label: "Journey", href: "#yatra" },
-  { label: "Today's Question", href: "#aaj-ka-prashn" },
-  { label: "Community", href: "#samuday" },
+  { label: "Daily Question", href: "#aaj-ka-prashn" },
+  { label: "One Bowl", href: "#katori-pani" },
   { label: "Books", href: "#pustakein" },
   { label: "Join", href: "#judein" },
+  { label: "Contact", href: "#sampark" },
 ];
 
 export const selfKnowledge = [
@@ -82,6 +83,7 @@ export const circles = [
   { icon: "🙏", name: "Service Circle", text: "Service to society" },
 ];
 
+// केवल शीर्षक/उपशीर्षक — कवर फोटो और खरीदने के लिंक data/content.js से ही आते हैं
 export const books = [
   { title: "Prakriti Path", subtitle: "Your Nature, Your Life Path" },
   { title: "Prakriti Path", subtitle: "A Journey Back to the Self" },
