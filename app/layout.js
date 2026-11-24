@@ -1,5 +1,7 @@
 import { Mukta, Noto_Serif_Devanagari } from "next/font/google";
 import "./globals.css";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import MetaPixel from "@/components/MetaPixel";
 
 const body = Mukta({
   subsets: ["devanagari", "latin"],
@@ -22,7 +24,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="hi" className={`${body.variable} ${heading.variable}`}>
-      <body>{children}</body>
+      {/* Google Translate <body> पर class जोड़ता है — उस पर चेतावनी न आए */}
+      <body suppressHydrationWarning>
+        {children}
+        <LanguageSwitcher />
+        <MetaPixel />
+      </body>
     </html>
   );
 }

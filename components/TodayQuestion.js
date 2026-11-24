@@ -1,32 +1,64 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { dailyQuestions } from "@/data/content";
-import { questionForDate } from "@/lib/dates";
+import { dailyQuestions as hiQuestions } from "@/data/content";
+import { dailyQuestions as enQuestions } from "@/data/content.en";
+import { ui } from "@/data/ui";
 
-export default function TodayQuestion() {
-  const [question, setQuestion] = useState(dailyQuestions[0]);
+// साल के दिन के हिसाब से हर दिन एक नया प्रश्न चुनता है।
+function getDayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  return Math.floor((date - start) / 86400000);
+}
+
+export default function TodayQuestion({ lang = "hi" }) {
+  const questions = lang === "en" ? enQuestions : hiQuestions;
+  const t = ui[lang === "en" ? "en" : "hi"].q;
+
+  const [question, setQuestion] = useState(questions[0]);
   const [dateText, setDateText] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     const today = new Date();
-    setQuestion(questionForDate(today));
-    setDateText(
-      today.toLocaleDateString("hi-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })
-    );
-  }, []);
+    setQuestion(questions[getDayOfYear(today) % questions.length]);
+    setDateText(today.toLocaleDateString(t.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" }));
+    // पहले लिखा उत्तर इसी browser में वापस दिखाएँ (Login आने तक अस्थायी)
+    try {
+      const key = "pp-answer-" + today.toDateString();
+      const old = localStorage.getItem(key);
+      if (old) setAnswer(old);
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
+
+  function handleSave() {
+    if (!answer.trim()) return;
+    try {
+      localStorage.setItem("pp-answer-" + new Date().toDateString(), answer);
+    } catch {}
+    setSaved(true);
+  }
 
   return (
     <div className="question-card">
-      <span className="eyebrow">आज का प्रश्न</span>
+      <span className="eyebrow">{t.eyebrow}</span>
       <p className="question-date">{dateText}</p>
       <h2 className="question-text serif">{question}</h2>
-      <a href="/login" className="btn btn-primary">
-        अपना उत्तर लिखें →
-      </a>
-      <p className="question-note">
-        Google से Login करें — आपका उत्तर आपकी निजी डायरी में सुरक्षित रहेगा।
-      </p>
+      <textarea
+        value={answer}
+        onChange={(e) => {
+          setAnswer(e.target.value);
+          setSaved(false);
+        }}
+        placeholder={t.placeholder}
+        aria-label={t.aria}
+      />
+      <button className="btn btn-primary" onClick={handleSave}>
+        {t.save}
+      </button>
+      {saved ? <p className="question-saved">{t.saved}</p> : <p className="question-note">{t.note}</p>}
     </div>
   );
 }

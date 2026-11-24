@@ -1,25 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { joinOptions } from "@/data/content";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-const EMPTY = {
-  name: "",
-  phone: "",
-  email: "",
-  city: "",
-  ageGroup: "",
-  gender: "",
-  interests: [],
-  message: "",
-  consent: false,
-};
-
 export default function FoundingForm() {
-  const [form, setForm] = useState(EMPTY);
+  const [form, setForm] = useState({ name: "", phone: "", email: "", city: "", consent: false });
   const [status, setStatus] = useState("idle"); // idle | sending | done | error
   const [message, setMessage] = useState("");
 
@@ -28,27 +15,12 @@ export default function FoundingForm() {
     if (status === "error") setStatus("idle");
   }
 
-  function toggleInterest(key) {
-    setForm((f) => ({
-      ...f,
-      interests: f.interests.includes(key) ? f.interests.filter((k) => k !== key) : [...f.interests, key],
-    }));
-    if (status === "error") setStatus("idle");
-  }
-
-  function fail(text) {
-    setStatus("error");
-    setMessage(text);
-  }
-
   async function handleSubmit(e) {
     e.preventDefault();
     const phone = form.phone.replace(/\D/g, "").slice(-10);
 
     if (form.name.trim().length < 2) return fail("कृपया अपना पूरा नाम लिखें।");
     if (!/^[6-9]\d{9}$/.test(phone)) return fail("कृपया सही 10 अंकों का मोबाइल नंबर लिखें।");
-    if (!form.ageGroup) return fail("कृपया अपना आयु वर्ग चुनें।");
-    if (form.interests.length === 0) return fail("कृपया कम से कम एक भाव चुनें — आप किस भाव से जुड़ना चाहते हैं।");
     if (!form.consent) return fail("आगे बढ़ने के लिए सहमति वाले बॉक्स पर टिक करें।");
     if (!SUPABASE_URL || !SUPABASE_KEY) return fail("Form अभी Database से नहीं जुड़ा है (.env.local देखें)।");
 
@@ -67,28 +39,28 @@ export default function FoundingForm() {
           phone,
           email: form.email.trim() || null,
           city: form.city.trim() || null,
-          age_group: form.ageGroup,
-          gender: form.gender || null,
-          // Supabase में पढ़ने में आसानी के लिए हिंदी नाम सहेजें
-          interests: form.interests.map((k) => joinOptions.interests.find((i) => i.key === k)?.label || k),
-          message: form.message.trim() || null,
           consent: true,
         }),
       });
 
       if (res.status === 409) {
         setStatus("done");
-        setMessage("आपका पंजीकरण पहले से हमारे पास है। 🌱 प्रकृति पथ की टीम जल्द ही आपसे संपर्क करेगी।");
+        setMessage("आप पहले से प्रकृति पथ से जुड़े हुए हैं। 🌱");
         return;
       }
       if (!res.ok) throw new Error(await res.text());
 
       setStatus("done");
-      setMessage(`धन्यवाद, ${form.name.trim()}! 🙏 आपका पंजीकरण प्राप्त हो गया है। प्रकृति पथ की टीम जल्द ही आपसे संपर्क करेगी।`);
+      setMessage(`धन्यवाद, ${form.name.trim()}! आप प्रकृति पथ के Founding Member बन गए हैं। 🌱`);
     } catch (err) {
       console.error(err);
       fail("कुछ गड़बड़ हुई। कृपया थोड़ी देर बाद फिर कोशिश करें।");
     }
+  }
+
+  function fail(text) {
+    setStatus("error");
+    setMessage(text);
   }
 
   if (status === "done") {
@@ -96,10 +68,7 @@ export default function FoundingForm() {
       <div className="join-card join-done">
         <div className="join-done-icon">🌱</div>
         <h3 className="serif">{message}</h3>
-        <p>तब तक आप चाहें तो Google से Login करके आज के प्रश्न से अपनी यात्रा शुरू कर सकते हैं।</p>
-        <a href="/login" className="btn btn-primary" style={{ marginTop: 16 }}>
-          आज का प्रश्न देखें →
-        </a>
+        <p>जैसे ही 30 दिनों की यात्रा शुरू होगी, हम आपसे संपर्क करेंगे।</p>
       </div>
     );
   }
@@ -123,7 +92,12 @@ export default function FoundingForm() {
         </label>
         <label>
           <span>ईमेल</span>
-          <input type="email" value={form.email} onChange={(e) => update("email", e.target.value)} placeholder="वैकल्पिक" />
+          <input
+            type="email"
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            placeholder="वैकल्पिक"
+          />
         </label>
         <label>
           <span>शहर</span>
@@ -131,84 +105,11 @@ export default function FoundingForm() {
         </label>
       </div>
 
-      {/* आयु वर्ग */}
-      <fieldset className="join-field">
-        <legend>आयु वर्ग *</legend>
-        <div className="chip-row">
-          {joinOptions.ageGroups.map((a) => (
-            <button
-              type="button"
-              key={a}
-              className={`chip ${form.ageGroup === a ? "chip-on" : ""}`}
-              onClick={() => update("ageGroup", a)}
-              aria-pressed={form.ageGroup === a}
-            >
-              {a} वर्ष
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      {/* लिंग */}
-      <fieldset className="join-field">
-        <legend>लिंग</legend>
-        <div className="chip-row">
-          {joinOptions.genders.map((g) => (
-            <button
-              type="button"
-              key={g}
-              className={`chip ${form.gender === g ? "chip-on" : ""}`}
-              onClick={() => update("gender", form.gender === g ? "" : g)}
-              aria-pressed={form.gender === g}
-            >
-              {g}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
-      {/* जुड़ने का भाव */}
-      <fieldset className="join-field">
-        <legend>
-          आप किस भाव से प्रकृति पथ से जुड़ना चाहते हैं? * <small>(एक या अधिक चुनें)</small>
-        </legend>
-        <div className="interest-grid">
-          {joinOptions.interests.map((i) => {
-            const on = form.interests.includes(i.key);
-            return (
-              <button
-                type="button"
-                key={i.key}
-                className={`interest ${on ? "interest-on" : ""}`}
-                onClick={() => toggleInterest(i.key)}
-                aria-pressed={on}
-              >
-                <span className="interest-check">{on ? "✓" : ""}</span>
-                <span className="interest-icon">{i.icon}</span>
-                <span>{i.label}</span>
-              </button>
-            );
-          })}
-        </div>
-      </fieldset>
-
-      {/* अपेक्षा */}
-      <label className="join-message">
-        <span>आप प्रकृति पथ से क्या अपेक्षा रखते हैं?</span>
-        <textarea
-          rows={3}
-          value={form.message}
-          onChange={(e) => update("message", e.target.value)}
-          placeholder="वैकल्पिक — दो-चार पंक्तियों में अपने मन की बात लिखें"
-          maxLength={1000}
-        />
-      </label>
-
       <label className="join-consent">
         <input type="checkbox" checked={form.consent} onChange={(e) => update("consent", e.target.checked)} />
         <span>
           मैं सहमत हूँ कि प्रकृति पथ मेरी जानकारी केवल इस कार्यक्रम के बारे में संपर्क करने के लिए उपयोग करे। मेरी
-          जानकारी किसी और को नहीं दी जाएगी। (<a href="/privacy">गोपनीयता नीति</a>)
+          जानकारी किसी और को नहीं दी जाएगी।
         </span>
       </label>
 

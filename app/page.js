@@ -1,27 +1,45 @@
+import { cookies } from "next/headers";
 import HeroPath from "@/components/HeroPath";
 import TodayQuestion from "@/components/TodayQuestion";
 import FoundingForm from "@/components/FoundingForm";
-import { SocialLinks, FounderSection, Gallery, ContactSection, WhatsAppFloat, KatoriPani } from "@/components/Extras";
-import {
-  site,
-  navLinks,
-  selfKnowledge,
-  pillars,
-  journeyWeeks,
-  circles,
-  books,
-  programs,
-  contact,
-} from "@/data/content";
+import * as hiContent from "@/data/content";
+import * as enContent from "@/data/content.en";
+import { ui } from "@/data/ui";
+import "./promo.css";
 
-export default function Home() {
+// भाषा: visitor ने 🌐 बटन से जो चुनी (cookie "pp_lang")। English का अपना सही अनुवाद है;
+// बाकी भाषाओं में हिंदी पेज Google से अनुवादित होता है।
+async function getLang() {
+  try {
+    const store = await cookies();
+    return store.get("pp_lang")?.value === "en" ? "en" : "hi";
+  } catch {
+    return "hi";
+  }
+}
+
+export default async function Home() {
+  const lang = await getLang();
+  const C = lang === "en" ? enContent : hiContent;
+  const t = ui[lang];
+  const { site, navLinks, selfKnowledge, pillars, journeyWeeks, circles, books, programs } = C;
+
   return (
     <>
+      {/* इस पेज का अपना English है — भाषा बटन इसे पढ़कर Google अनुवाद नहीं चलाता */}
+      <span data-pp-native="en" hidden />
+
+      {/* ===== मार्गदर्शन — सबसे ऊपर की पट्टी ===== */}
+      <a href="/guidance" className="pp-promo">
+        <span>{t.promo}</span>
+        <b>{t.promoBtn}</b>
+      </a>
+
       {/* ===== Header ===== */}
       <header className="header">
         <div className="container header-inner">
-          <a href="#" className="logo serif">
-            <img src="/images/logo-mark.webp" alt="" className="logo-img" />
+          <a href="#" className="logo serif notranslate" translate="no">
+            <span className="logo-mark">प</span>
             {site.name}
           </a>
           <nav className="nav">
@@ -30,47 +48,49 @@ export default function Home() {
                 {l.label}
               </a>
             ))}
+            {t.navExtra.map((l) => (
+              <a key={l.href} href={l.href} className={l.href === "/margdarshan" ? "pp-nav-hl" : undefined}>
+                {l.label}
+              </a>
+            ))}
           </nav>
-          <div className="header-actions">
-            <a href="/login" className="btn btn-outline">
-              Login
-            </a>
-            <a href="#judein" className="btn btn-primary">
-              Founding Member बनें
-            </a>
-          </div>
+          <a href="#judein" className="btn btn-primary">
+            {t.foundingBtn}
+          </a>
         </div>
       </header>
 
-      <main>
+      <main lang={lang}>
         {/* ===== Hero ===== */}
         <section className="hero">
           <HeroPath />
           <div className="container hero-inner">
-            <h1>{site.name}</h1>
+            <h1 className="notranslate" translate="no">
+              {site.name}
+            </h1>
             <p className="hero-tagline serif">{site.tagline}</p>
             <p className="hero-intro">{site.intro}</p>
             <div className="hero-actions">
-              <a href="/login" className="btn btn-primary">
-                अपनी यात्रा शुरू करें →
+              <a href="#aaj-ka-prashn" className="btn btn-primary">
+                {t.heroStart}
               </a>
               <a href="#yatra" className="btn btn-outline">
-                प्रकृति पथ को जानें
+                {t.heroKnow}
               </a>
             </div>
-            <p className="hero-en">A Journey Towards Self-Discovery</p>
+            <a href="/margdarshan" className="pp-hero-guide">
+              {t.heroGuide} →
+            </a>
+            <p className="hero-en">{t.heroSub}</p>
           </div>
         </section>
 
         {/* ===== Section 2: आप स्वयं को कितना जानते हैं? ===== */}
         <section className="section know" id="parichay">
           <div className="container">
-            <span className="eyebrow">पहला प्रश्न</span>
-            <h2 className="section-title">आप स्वयं को कितना जानते हैं?</h2>
-            <p className="section-lead">
-              हम दुनिया के बारे में बहुत कुछ जानते हैं, पर स्वयं के बारे में सबसे कम। प्रकृति पथ इन पाँच
-              प्रश्नों से शुरू होता है।
-            </p>
+            <span className="eyebrow">{t.knowEyebrow}</span>
+            <h2 className="section-title">{t.knowTitle}</h2>
+            <p className="section-lead">{t.knowLead}</p>
             <div className="know-grid">
               {selfKnowledge.map((k, i) => (
                 <div className="know-card" key={k.title}>
@@ -86,16 +106,15 @@ export default function Home() {
         {/* ===== Section 3: हमारी यात्रा — 4 स्तंभ ===== */}
         <section className="section" id="yatra">
           <div className="container">
-            <span className="eyebrow">हमारी यात्रा</span>
-            <h2 className="section-title">चार कदम — स्वयं से समाज तक</h2>
-            <p className="section-lead">
-              व्यक्ति → परिवार → समाज → राष्ट्र → मानवता। जब व्यक्ति स्वयं को समझने लगता है, तो बाकी सब
-              समझना आसान हो जाता है।
-            </p>
+            <span className="eyebrow">{t.yatraEyebrow}</span>
+            <h2 className="section-title">{t.yatraTitle}</h2>
+            <p className="section-lead">{t.yatraLead}</p>
             <div className="pillar-grid">
               {pillars.map((p, i) => (
                 <div className="pillar" key={p.en}>
-                  <span className="pillar-step">कदम {i + 1}</span>
+                  <span className="pillar-step">
+                    {t.step} {i + 1}
+                  </span>
                   <div className="pillar-icon">{p.icon}</div>
                   <h3>{p.title}</h3>
                   <p className="en">{p.en}</p>
@@ -106,12 +125,10 @@ export default function Home() {
           </div>
         </section>
 
-        <FounderSection />
-
         {/* ===== Section 4: आज का प्रश्न ===== */}
         <section className="section question-wrap" id="aaj-ka-prashn">
           <div className="container">
-            <TodayQuestion />
+            <TodayQuestion lang={lang} />
           </div>
         </section>
 
@@ -120,12 +137,9 @@ export default function Home() {
           <div className="container">
             <div className="journey-head">
               <div>
-                <span className="eyebrow">स्वयं की खोज</span>
-                <h2 className="section-title">30 दिनों की आत्म-खोज यात्रा</h2>
-                <p className="section-lead">
-                  हर दिन एक प्रश्न, हर सप्ताह एक चिंतन। 30 दिन से शुरू करें — और 365 दिनों की यात्रा तक
-                  पहुँचें।
-                </p>
+                <span className="eyebrow">{t.journeyEyebrow}</span>
+                <h2 className="section-title">{t.journeyTitle}</h2>
+                <p className="section-lead">{t.journeyLead}</p>
               </div>
               <div className="big-num serif">30</div>
             </div>
@@ -140,23 +154,19 @@ export default function Home() {
               ))}
             </div>
             <div className="journey-cta">
-              <a href="/login" className="btn btn-haldi">
-                दिन 1 से शुरू करें
+              <a href="#aaj-ka-prashn" className="btn btn-haldi">
+                {t.startDay1}
               </a>
             </div>
           </div>
         </section>
 
-        <KatoriPani />
-
         {/* ===== Section 6: समुदाय ===== */}
         <section className="section" id="samuday" style={{ paddingTop: 0 }}>
           <div className="container">
-            <span className="eyebrow">समुदाय</span>
-            <h2 className="section-title">सोशल मीडिया नहीं — सार्थक समुदाय</h2>
-            <p className="section-lead">
-              ऐसे लोगों के साथ जुड़ें जो स्वयं को समझना चाहते हैं। हर मंडल एक विषय पर केंद्रित।
-            </p>
+            <span className="eyebrow">{t.communityEyebrow}</span>
+            <h2 className="section-title">{t.communityTitle}</h2>
+            <p className="section-lead">{t.communityLead}</p>
             <div className="circle-grid">
               {circles.map((c) => (
                 <div className="circle" key={c.name}>
@@ -171,54 +181,30 @@ export default function Home() {
           </div>
         </section>
 
-        <Gallery />
-
         {/* ===== Section 7: पुस्तकें और कार्यक्रम ===== */}
         <section className="section books-wrap" id="pustakein">
           <div className="container">
-            <span className="eyebrow">पुस्तकें और कार्यक्रम</span>
-            <h2 className="section-title">पढ़ें, समझें, जिएँ</h2>
+            <span className="eyebrow">{t.booksEyebrow}</span>
+            <h2 className="section-title">{t.booksTitle}</h2>
             <div className="two-col">
               <div>
-                <h3 className="col-title">पुस्तकें</h3>
+                <h3 className="col-title">{t.colBooks}</h3>
                 <div className="book-row">
-                  {books.map((b) => {
-                    const cover = b.image ? (
-                      <img src={b.image} alt={`${b.title} — ${b.subtitle}`} className="book book-img" />
-                    ) : (
-                      <div className="book">
-                        <div>
-                          <div className="t serif">{b.title}</div>
-                          <div className="s">{b.subtitle}</div>
+                  {books.map((b) => (
+                    <div className="book" key={b.subtitle}>
+                      <div>
+                        <div className="t serif notranslate" translate="no">
+                          {b.title}
                         </div>
-                        <div className="a">{site.founder}</div>
+                        <div className="s">{b.subtitle}</div>
                       </div>
-                    );
-                    return (
-                      <div key={b.subtitle} className="book-link">
-                        {b.link ? (
-                          <a href={b.link} target="_blank" rel="noopener noreferrer">
-                            {cover}
-                          </a>
-                        ) : (
-                          cover
-                        )}
-                        {b.buy?.length > 0 && (
-                          <div className="book-buy">
-                            {b.buy.map((l) => (
-                              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
-                                {l.label} पर खरीदें
-                              </a>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+                      <div className="a">{site.founder}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div>
-                <h3 className="col-title">कार्यक्रम</h3>
+                <h3 className="col-title">{t.colPrograms}</h3>
                 {programs.map((p) => (
                   <div className="program" key={p.title}>
                     <h4>{p.title}</h4>
@@ -230,22 +216,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ===== आगे का पथ — नए pages ===== */}
+        <section className="section" id="aage">
+          <div className="container">
+            <span className="eyebrow">{t.aageEyebrow}</span>
+            <h2 className="section-title">{t.aageTitle}</h2>
+            <p className="section-lead">{t.aageLead}</p>
+            <div className="know-grid">
+              {t.newPages.map((n) => (
+                <a
+                  className="know-card"
+                  key={n.href}
+                  href={n.href}
+                  style={{ textDecoration: "none", color: "inherit", display: "block" }}
+                >
+                  <span className="num" aria-hidden>
+                    {n.icon}
+                  </span>
+                  <h3>{n.label} →</h3>
+                  <p>{n.text}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ===== Founding Members — जुड़ें ===== */}
         <section className="section final" id="judein">
           <div className="container">
-            <blockquote className="serif">
-              “लोगों को प्रकृति पथ से जोड़ना नहीं, लोगों को स्वयं से जोड़ना है।”
-            </blockquote>
-            <span className="eyebrow">100 Founding Members</span>
-            <h2 className="section-title">पहले 100 यात्रियों में शामिल हों</h2>
+            <blockquote className="serif">{t.quote}</blockquote>
+            <span className="eyebrow">{t.foundingEyebrow}</span>
+            <h2 className="section-title">{t.foundingTitle}</h2>
             <p className="section-lead" style={{ margin: "0 auto 36px" }}>
-              30 दिन · 30 प्रश्न · 4 साप्ताहिक चिंतन · 1 अंतिम जीवन-चिंतन। प्रकृति पथ को आकार देने में आपकी
-              भागीदारी सबसे महत्वपूर्ण होगी।
+              {t.foundingLead}
             </p>
             <FoundingForm />
           </div>
         </section>
-        <ContactSection />
       </main>
 
       {/* ===== Footer ===== */}
@@ -253,34 +260,33 @@ export default function Home() {
         <div className="container">
           <div className="footer-inner">
             <div>
-              <div className="logo serif">
-                <img src="/images/logo-mark.webp" alt="" className="logo-img" />
+              <div className="logo serif notranslate" translate="no">
+                <span className="logo-mark">प</span>
                 {site.name}
               </div>
               <p style={{ marginTop: 10 }}>{site.tagline}</p>
             </div>
             <div>
-              <p>संस्थापक: {site.founder}</p>
-              {contact.phone && <p>📞 {contact.phone}</p>}
-              {contact.email && (
-                <p>
-                  ✉️ <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              {t.newPages.map((n) => (
+                <p key={n.href}>
+                  <a href={n.href} style={{ color: "inherit" }}>
+                    {n.label}
+                  </a>
                 </p>
-              )}
+              ))}
+            </div>
+            <div>
+              <p>
+                {t.founder}: {site.founder}
+              </p>
               <p>{site.website}</p>
-              <SocialLinks light />
-              <div className="footer-links">
-                <a href="/privacy">गोपनीयता नीति</a>
-                <a href="/terms">उपयोग की शर्तें</a>
-              </div>
             </div>
           </div>
-          <div className="footer-bottom">
-            © {new Date().getFullYear()} {site.name} · {site.nameEn}
+          <div className="footer-bottom notranslate" translate="no">
+            © {new Date().getFullYear()} {hiContent.site.name} · {hiContent.site.nameEn}
           </div>
         </div>
       </footer>
-      <WhatsAppFloat />
     </>
   );
 }

@@ -1,0 +1,196 @@
+/* /guidance — Facebook ads landing page */
+.gd {
+  scroll-behavior: smooth;
+}
+.gd-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px clamp(16px, 4vw, 40px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--md-line);
+}
+.gd-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--md-water-deep);
+  text-decoration: none;
+}
+.gd-logo span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--md-water-deep);
+  color: #fff;
+  font-size: 16px;
+}
+.gd-top-cta {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--md-haldi);
+  color: #2b1d05;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.gd-hero {
+  padding: clamp(28px, 6vw, 72px) 0 clamp(40px, 6vw, 72px);
+  background: radial-gradient(1000px 480px at 90% 0%, #f6e3bd 0%, transparent 60%),
+    linear-gradient(180deg, var(--md-cream), #fff);
+}
+.gd-hero-in {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 48px;
+  align-items: start;
+}
+.gd-ticks {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--md-water-deep);
+}
+.gd-guide {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.gd-avatar {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--md-water);
+  color: var(--md-haldi);
+  font-size: 30px;
+  overflow: hidden;
+}
+.gd-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gd-guide b {
+  display: block;
+  font-size: 17px;
+}
+.gd-guide span {
+  font-size: 14px;
+  color: var(--md-muted);
+}
+.gd-form {
+  scroll-margin-top: 72px;
+  border-top: 5px solid var(--md-haldi);
+}
+.gd-form-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--md-water-deep);
+}
+.gd-form-sub {
+  margin: 4px 0 16px;
+  font-size: 14px;
+  color: var(--md-muted);
+}
+.gd-fields {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.gd-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gd-fields span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.gd-submit {
+  width: 100%;
+  min-height: 54px;
+  font-size: 17px;
+}
+.gd-privacy {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--md-muted);
+  text-align: center;
+}
+.gd-privacy a {
+  color: inherit;
+}
+.gd-next {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--md-line);
+}
+.gd-next p {
+  margin-bottom: 10px;
+}
+.gd .md-org-list li {
+  color: #e3eee6;
+}
+.gd .md-org-list b {
+  color: #fff;
+}
+.gd-sticky {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .gd-hero-in {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+@media (max-width: 600px) {
+  .gd .md-title {
+    font-size: 30px;
+  }
+  .gd-sticky {
+    display: block;
+    transform: translateY(140%);
+    transition: transform 0.25s ease;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 60;
+    padding: 15px 16px;
+    border-radius: 999px;
+    background: var(--md-haldi);
+    color: #2b1d05;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  }
+  .gd-sticky-on {
+    transform: none;
+  }
+  .gd {
+    padding-bottom: 80px;
+  }
+  /* ad page पर मोबाइल में भाषा बटन छिपाएँ — ध्यान केवल फॉर्म पर (ऊपर Google का popup फिर भी मिलता है) */
+  .gd ~ .pp-lang {
+    display: none;
+  }
+}
