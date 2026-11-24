@@ -1,0 +1,111 @@
+/* भाषा बदलने का बटन — हर पेज पर नीचे-बाएँ कोने में (दाएँ WhatsApp बटन है) */
+.pp-lang {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  font-family: inherit;
+}
+.pp-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #1f3d2f;
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+}
+.pp-lang-btn:hover {
+  background: #2f5d46;
+}
+.pp-lang-caret {
+  font-size: 11px;
+  opacity: 0.8;
+}
+.pp-lang-menu {
+  position: absolute;
+  left: 0;
+  bottom: 56px;
+  width: 300px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e4ddd0;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+.pp-lang-head {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #b5582e;
+}
+.pp-lang-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.pp-lang-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  border: 1px solid #e4ddd0;
+  border-radius: 10px;
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+  color: #1f2a2e;
+  text-align: left;
+  cursor: pointer;
+}
+.pp-lang-item:hover {
+  border-color: #2f5d46;
+  background: #e8f1ea;
+}
+.pp-lang-item small {
+  font-size: 11px;
+  color: #5b6b70;
+}
+.pp-lang-on {
+  border-color: #2f5d46;
+  background: #e8f1ea;
+  font-weight: 700;
+}
+.pp-lang-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #5b6b70;
+}
+
+/* Google Translate की अपनी ऊपर वाली पट्टी और tooltip छिपाएँ */
+body > .skiptranslate,
+iframe.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+font[style] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 600px) {
+  .pp-lang {
+    left: 12px;
+    bottom: 12px;
+  }
+  .pp-lang-menu {
+    width: min(300px, calc(100vw - 24px));
+  }
+}

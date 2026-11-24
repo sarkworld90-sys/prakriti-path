@@ -1,0 +1,70 @@
+/* होमपेज पर मार्गदर्शन को उभारने वाले हिस्से */
+.pp-promo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 10px 16px;
+  background: #1f3d2f;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+}
+.pp-promo b {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #e2a33c;
+  color: #2b1d05;
+  white-space: nowrap;
+}
+.pp-promo:hover b {
+  background: #f0b552;
+}
+.pp-nav-hl {
+  padding: 4px 12px !important;
+  border-radius: 999px;
+  background: #fdecc8;
+  color: #7a4a10 !important;
+  font-weight: 700;
+}
+.pp-hero-guide {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px dashed #b5582e;
+  color: #b5582e;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+.pp-hero-guide:hover {
+  background: #fff7e6;
+}
+@media (max-width: 600px) {
+  .pp-promo {
+    font-size: 14px;
+  }
+}
+.nav a,
+.header-actions .btn {
+  white-space: nowrap;
+}
+.header .logo {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (min-width: 961px) and (max-width: 1320px) {
+  .header .nav {
+    gap: 18px;
+  }
+  .header .nav a {
+    font-size: 15px;
+  }
+}
+.header .logo {
+  margin-right: 14px;
+}
