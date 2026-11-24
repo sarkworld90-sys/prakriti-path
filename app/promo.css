@@ -49,3 +49,22 @@
     font-size: 14px;
   }
 }
+.nav a,
+.header-actions .btn {
+  white-space: nowrap;
+}
+.header .logo {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (min-width: 961px) and (max-width: 1320px) {
+  .header .nav {
+    gap: 18px;
+  }
+  .header .nav a {
+    font-size: 15px;
+  }
+}
+.header .logo {
+  margin-right: 14px;
+}
