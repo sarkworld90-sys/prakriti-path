@@ -74,7 +74,17 @@ export default function MargdarshanPage() {
             </div>
             <p className="md-trust">पहली 15 मिनट की बातचीत निःशुल्क · व्यक्तिगत · समूह · Corporate · विभाग</p>
           </div>
-          <PathArt />
+          <div className="md-hero-photo">
+            {contact.guidePhoto ? (
+              <img src={contact.guidePhoto} alt="अमरेश कुमार रुद्र" />
+            ) : (
+              <PathArt />
+            )}
+            <div className="md-hero-name">
+              <b>अमरेश कुमार रुद्र</b>
+              <span>लेखक “प्रकृति पथ” · आपके मार्गदर्शक</span>
+            </div>
+          </div>
         </div>
       </section>
 
