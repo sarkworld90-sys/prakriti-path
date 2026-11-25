@@ -194,3 +194,87 @@
     display: none;
   }
 }
+
+/* ── आपकी बड़ी photo ── */
+.gd-person {
+  margin-top: 30px;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+.gd-arch {
+  flex: none;
+  width: 250px;
+  aspect-ratio: 488 / 544;
+  position: relative;
+  display: grid;
+  place-items: end center;
+}
+.gd-arch::before {
+  content: "";
+  position: absolute;
+  inset: 22px -14px 0 -14px;
+  border-radius: 160px 160px 18px 18px;
+  background: #f6e3bd;
+}
+.gd-arch img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 28px rgba(31, 61, 47, 0.22));
+}
+.gd-arch span {
+  position: relative;
+  font-size: 80px;
+  color: var(--md-water);
+  align-self: center;
+}
+.gd-person-txt {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 8px;
+}
+.gd-person-txt b {
+  font-size: 24px;
+  color: var(--md-water-deep);
+}
+.gd-person-txt span {
+  font-size: 14px;
+  color: var(--md-muted);
+}
+.gd-person-txt q {
+  margin-top: 8px;
+  padding-left: 12px;
+  border-left: 3px solid var(--md-haldi);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--md-water-deep);
+}
+@media (max-width: 960px) {
+  .gd-copy {
+    display: flex;
+    flex-direction: column;
+  }
+  .gd-person {
+    order: -1;
+    margin: 0 0 18px;
+    align-items: center;
+    gap: 16px;
+  }
+  .gd-arch {
+    width: 120px;
+  }
+  .gd-arch::before {
+    inset: 10px -6px 0 -6px;
+  }
+  .gd-person-txt b {
+    font-size: 19px;
+  }
+  .gd-person-txt span {
+    font-size: 13px;
+  }
+  .gd-person-txt q {
+    display: none;
+  }
+}
