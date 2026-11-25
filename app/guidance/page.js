@@ -64,13 +64,18 @@ export default function GuidancePage() {
               <li>✓ पूरी गोपनीयता — एक-से-एक बातचीत</li>
               <li>✓ हिंदी या English में</li>
             </ul>
-            <div className="gd-guide">
-              <div className="gd-avatar serif" aria-hidden={!contact.guidePhoto}>
-                {contact.guidePhoto ? <img src={contact.guidePhoto} alt="Amresh Kumar Rudra" /> : "अ"}
+            <div className="gd-person">
+              <div className="gd-arch">
+                {contact.guidePhoto ? (
+                  <img src={contact.guidePhoto} alt="अमरेश कुमार रुद्र" />
+                ) : (
+                  <span className="serif">अ</span>
+                )}
               </div>
-              <div>
-                <b>अमरेश कुमार रुद्र</b>
-                <span>लेखक · सामाजिक चिंतक · संस्थापक, प्रकृति पथ</span>
+              <div className="gd-person-txt">
+                <b className="serif">अमरेश कुमार रुद्र</b>
+                <span>लेखक “प्रकृति पथ” · सामाजिक चिंतक · संस्थापक, प्रकृति पथ</span>
+                <q className="serif">लोगों को प्रकृति पथ से जोड़ना नहीं, लोगों को स्वयं से जोड़ना है।</q>
               </div>
             </div>
           </div>
