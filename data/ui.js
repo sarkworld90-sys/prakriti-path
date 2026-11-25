@@ -3,7 +3,7 @@
 
 export const ui = {
   hi: {
-    promo: "🪷 जीवन में उलझन, डर या दिशा की कमी? अमरेश कुमार रुद्र से 15 मिनट की बातचीत — निःशुल्क",
+    promo: "🪷 अपनी प्रकृति को समझिए, अपना पथ चुनिए — अमरेश कुमार रुद्र से 15 मिनट की बातचीत, निःशुल्क",
     promoBtn: "बातचीत बुक करें →",
     heroGuide: "🪷 मार्गदर्शन सत्र",
     foundingBtn: "Founding Member बनें",
@@ -61,7 +61,7 @@ export const ui = {
   },
 
   en: {
-    promo: "🪷 Feeling stuck, unsure or without direction? A free 15-minute call with Amresh Kumar Rudra",
+    promo: "🪷 Understand your nature, choose your path — a free 15-minute conversation with Amresh Kumar Rudra",
     promoBtn: "Book a Call →",
     heroGuide: "🪷 Guidance Sessions",
     foundingBtn: "Founding Member",
