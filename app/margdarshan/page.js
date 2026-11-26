@@ -66,13 +66,13 @@ export default function MargdarshanPage() {
             </p>
             <div className="md-cta">
               <a href="#book" className="md-btn md-btn-primary">
-                सत्र बुक करें →
+                Appointment लें →
               </a>
               <a href="#programs" className="md-btn md-btn-ghost">
                 कार्यक्रम देखें
               </a>
             </div>
-            <p className="md-trust">पहली 15 मिनट की बातचीत निःशुल्क · व्यक्तिगत · समूह · Corporate · विभाग</p>
+            <p className="md-trust">15 मिनट की पहली बातचीत · व्यक्तिगत · समूह · Corporate · विभाग</p>
           </div>
           <div className="md-hero-photo">
             {contact.guidePhoto ? (
@@ -108,7 +108,7 @@ export default function MargdarshanPage() {
             <span aria-hidden>🧭</span>
             <span>
               <b>पहला कदम: 3 मिनट में जानिए अपनी प्रकृति</b>
-              <small>16 सरल प्रश्न · निःशुल्क · तुरंत परिणाम</small>
+              <small>16 सरल प्रश्न · 3 मिनट · तुरंत परिणाम</small>
             </span>
             <span className="md-quiz-go">Quiz शुरू करें →</span>
           </a>
@@ -214,9 +214,9 @@ export default function MargdarshanPage() {
             </div>
           </div>
           <figure className="md-qr">
-            <img src={QR_SRC} alt="पुस्तक से सत्र बुक करने का QR code" width={150} height={150} loading="lazy" />
+            <img src={QR_SRC} alt="पुस्तक से Appointment लेने का QR code" width={150} height={150} loading="lazy" />
             <figcaption>
-              पुस्तक के पाठक: QR स्कैन करें और सीधे सत्र बुक करें
+              पुस्तक के पाठक: QR स्कैन करें और सीधे Appointment लें
               <br />
               <a href={QR_SRC} target="_blank" rel="noopener noreferrer">
                 छापने के लिए QR डाउनलोड करें
@@ -226,14 +226,14 @@ export default function MargdarshanPage() {
         </div>
       </section>
 
-      {/* ── बुकिंग ── */}
+      {/* ── Appointment ── */}
       <section className="md-sec" id="book">
         <div className="md-wrap md-narrow">
-          <p className="md-eyebrow">सत्र बुक करें</p>
+          <p className="md-eyebrow">Appointment लें</p>
           <h2 className="md-h2 serif">पहला कदम — बस एक फॉर्म</h2>
           <p className="md-sub-lead">
-            फॉर्म भरें। जिन कार्यक्रमों का शुल्क तय है, उनका भुगतान तुरंत online हो सकता है; बाकी के लिए हमारी टीम आपसे बात
-            करके समय और शुल्क तय करेगी। <b>पहली 15 मिनट की बातचीत निःशुल्क है।</b>
+            फॉर्म भरें — हमारी टीम 24–48 घंटों में आपसे संपर्क करके <b>Appointment का समय</b> तय करेगी। समझ न आए कि कौन-सा
+            कार्यक्रम चुनें, तो पहले 15 मिनट की बातचीत चुनें।
           </p>
           <BookingForm />
         </div>
@@ -255,7 +255,7 @@ export default function MargdarshanPage() {
 
           <div className="md-care" role="note">
             <b>एक ज़रूरी बात:</b> यह मार्गदर्शन आत्म-समझ और जीवन-दिशा के लिए है, इलाज के लिए नहीं। अगर आप बहुत गहरे दुख,
-            निराशा या संकट में हैं, तो कृपया डॉक्टर से मिलें या सरकार की निःशुल्क, 24×7 हेल्पलाइन{" "}
+            निराशा या संकट में हैं, तो कृपया डॉक्टर से मिलें या सरकार की 24×7 हेल्पलाइन{" "}
             <b>Tele-MANAS: 14416</b> (या 1-800-891-4416) पर बात करें।
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function MargdarshanPage() {
           <h2 className="serif">अपनी प्रकृति, अपना जीवन पथ</h2>
           <p>बदलाव किसी बड़े दिन का इंतज़ार नहीं करता — वह एक बातचीत से शुरू होता है।</p>
           <a href="#book" className="md-btn md-btn-haldi">
-            सत्र बुक करें →
+            Appointment लें →
           </a>
           <p className="md-attrib">
             Prakriti Path · By Amresh Kumar Rudra · <a href={`mailto:${contact.email}`}>{contact.email}</a>
