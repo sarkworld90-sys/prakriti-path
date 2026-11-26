@@ -3,12 +3,12 @@ import PrakritiQuiz from "@/components/margdarshan/PrakritiQuiz";
 import { TYPES } from "@/data/prakritiQuiz";
 
 export const metadata = {
-  title: "अपनी प्रकृति जानें — निःशुल्क Prakriti Quiz | Prakriti Path",
+  title: "अपनी प्रकृति जानें — Prakriti Quiz | Prakriti Path",
   description:
     "16 सरल प्रश्न, 3 मिनट: जानिए आपके भीतर पृथ्वी, जल, अग्नि या वायु — कौन-सी प्रकृति प्रबल है, आपकी शक्ति क्या है और आप कहाँ अटकते हैं।",
   alternates: { canonical: "https://prakritipath.org/prakriti-quiz" },
   openGraph: {
-    title: "अपनी प्रकृति जानें — 3 मिनट का निःशुल्क Quiz",
+    title: "अपनी प्रकृति जानें — 3 मिनट का Quiz",
     description: "पृथ्वी, जल, अग्नि या वायु — आपकी प्रकृति कौन-सी है?",
     url: "https://prakritipath.org/prakriti-quiz",
     siteName: "Prakriti Path",
@@ -22,7 +22,7 @@ export default function QuizPage() {
     <main className="md">
       <section className="md-hero md-quiz-hero">
         <div className="md-wrap md-narrow" style={{ textAlign: "center" }}>
-          <p className="md-kicker">प्रकृति पथ · निःशुल्क Quiz</p>
+          <p className="md-kicker">प्रकृति पथ · Prakriti Quiz</p>
           <h1 className="md-title serif">
             अपनी प्रकृति जानें
             <br />
