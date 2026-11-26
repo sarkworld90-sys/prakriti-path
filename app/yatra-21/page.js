@@ -36,7 +36,7 @@ export default function Yatra21Page() {
               पहले अपनी प्रकृति जानें
             </a>
           </div>
-          <p className="md-trust">{feeLabel(prog)} · Online</p>
+          <p className="md-trust">{prog.price ? `${feeLabel(prog)} · ` : ""}21 दिन · Online · Appointment से शुरुआत</p>
         </div>
       </section>
 
@@ -80,13 +80,13 @@ export default function Yatra21Page() {
       <section className="md-final">
         <div className="md-wrap md-narrow">
           <h2 className="serif">21 दिन बाद, आप खुद को थोड़ा और जानेंगे</h2>
-          <p>पहली 15 मिनट की बातचीत निःशुल्क है — तय करने से पहले बात कर लें।</p>
+          <p>तय करने से पहले 15 मिनट बात कर लें — Appointment लें।</p>
           <div className="md-cta" style={{ justifyContent: "center" }}>
             <a href={BOOK} className="md-btn md-btn-haldi">
               यात्रा शुरू करें →
             </a>
             <a href="/margdarshan?program=free_call#book" className="md-btn md-btn-ghost">
-              निःशुल्क बातचीत
+              पहले बात करें
             </a>
           </div>
           <p className="md-attrib">Prakriti Path · By Amresh Kumar Rudra</p>
