@@ -4,14 +4,14 @@ import { PAINS, APPROACH, contact } from "@/data/margdarshan";
 import LeadForm from "@/components/margdarshan/LeadForm";
 import StickyCta from "@/components/margdarshan/StickyCta";
 
-// Facebook / Instagram ads के लिए ख़ास पेज — एक ही लक्ष्य: निःशुल्क बातचीत बुक करना
+// Facebook / Instagram ads के लिए ख़ास पेज — एक ही लक्ष्य: Appointment लेना
 export const metadata = {
-  title: "निःशुल्क मार्गदर्शन बातचीत — Amresh Kumar Rudra | Prakriti Path",
+  title: "मार्गदर्शन बातचीत — Appointment लें | Amresh Kumar Rudra | Prakriti Path",
   description:
-    "उलझन से स्पष्टता तक: अमरेश कुमार रुद्र (लेखक, प्रकृति पथ) के साथ 15 मिनट की निःशुल्क बातचीत। अपनी प्रकृति समझें और आगे की दिशा पाएँ।",
+    "उलझन से स्पष्टता तक: अमरेश कुमार रुद्र (लेखक, प्रकृति पथ) के साथ 15 मिनट की व्यक्तिगत बातचीत — Appointment लें। अपनी प्रकृति समझें और आगे की दिशा पाएँ।",
   alternates: { canonical: "https://prakritipath.org/guidance" },
   openGraph: {
-    title: "उलझन से स्पष्टता तक — 15 मिनट की निःशुल्क बातचीत",
+    title: "उलझन से स्पष्टता तक — 15 मिनट की व्यक्तिगत बातचीत",
     description: "अमरेश कुमार रुद्र के साथ। अपनी प्रकृति समझें, आगे की दिशा पाएँ।",
     url: "https://prakritipath.org/guidance",
     siteName: "Prakriti Path",
@@ -28,21 +28,21 @@ const IN_15 = [
 ];
 
 const FAQ_SHORT = [
-  { q: "क्या सच में निःशुल्क है?", a: "हाँ। पहली 15 मिनट की बातचीत पूरी तरह निःशुल्क है। आगे का कोई सत्र लेना या न लेना आपका निर्णय है।" },
-  { q: "बातचीत कैसे होगी?", a: "फ़ोन या video call पर, आपकी सुविधा के समय। फॉर्म भरने के 24 घंटों में हम संपर्क करते हैं।" },
+  { q: "Appointment कैसे मिलेगा?", a: "फॉर्म भरें — हम 24 घंटों में संपर्क करके आपकी सुविधा का समय तय करेंगे। पहली बातचीत के बाद आगे का कोई सत्र लेना या न लेना पूरी तरह आपका निर्णय है।" },
+  { q: "बातचीत कैसे होगी?", a: "फ़ोन या video call पर, आपकी सुविधा के समय — हिंदी या English में।" },
   { q: "क्या मेरी बातें गोपनीय रहेंगी?", a: "हाँ। आपकी बातें और जानकारी किसी के साथ साझा नहीं की जातीं।" },
 ];
 
 export default function GuidancePage() {
   return (
     <main className="md gd">
-      {/* ── ऊपर: छोटा logo, कोई menu नहीं — ध्यान केवल बुकिंग पर ── */}
+      {/* ── ऊपर: छोटा logo, कोई menu नहीं — ध्यान केवल Appointment पर ── */}
       <div className="gd-top">
         <a href="/" className="gd-logo serif notranslate" translate="no">
           <span>प</span> प्रकृति पथ
         </a>
         <a href="#form" className="gd-top-cta">
-          निःशुल्क बुक करें
+          Appointment लें
         </a>
       </div>
 
@@ -50,17 +50,17 @@ export default function GuidancePage() {
       <section className="gd-hero">
         <div className="md-wrap gd-hero-in">
           <div className="gd-copy">
-            <p className="md-kicker">निःशुल्क · 15 मिनट · फ़ोन / Video Call</p>
+            <p className="md-kicker">Appointment · 15 मिनट · फ़ोन / Video Call</p>
             <h1 className="md-title serif">
               उलझन से स्पष्टता तक —<br />
-              <span>पहली बातचीत निःशुल्क</span>
+              <span>आज ही Appointment लें</span>
             </h1>
             <p className="md-lead">
               जीवन के हर मोड़ पर कुछ प्रश्न होते हैं — मैं कौन हूँ, मेरे लिए सही राह क्या है? 15 मिनट की एक शांत बातचीत में
               अपनी प्रकृति को समझिए, और आगे का रास्ता साफ़ देखिए।
             </p>
             <ul className="gd-ticks">
-              <li>✓ कोई शुल्क नहीं, कोई दबाव नहीं</li>
+              <li>✓ कोई दबाव नहीं — आपकी गति, आपका निर्णय</li>
               <li>✓ पूरी गोपनीयता — एक-से-एक बातचीत</li>
               <li>✓ हिंदी या English में</li>
             </ul>
@@ -149,7 +149,7 @@ export default function GuidancePage() {
           </div>
           <div className="md-care" role="note">
             <b>ध्यान दें:</b> यह मार्गदर्शन आत्म-समझ और जीवन-दिशा के लिए है, इलाज के लिए नहीं। अगर आप बहुत गहरे दुख, निराशा
-            या संकट में हैं, तो कृपया डॉक्टर से मिलें या सरकार की निःशुल्क, 24×7 हेल्पलाइन <b>Tele-MANAS: 14416</b> पर बात
+            या संकट में हैं, तो कृपया डॉक्टर से मिलें या सरकार की 24×7 हेल्पलाइन <b>Tele-MANAS: 14416</b> पर बात
             करें।
           </div>
         </div>
@@ -159,9 +159,9 @@ export default function GuidancePage() {
       <section className="md-final">
         <div className="md-wrap md-narrow">
           <h2 className="serif">बदलाव एक बातचीत से शुरू होता है</h2>
-          <p>15 मिनट · निःशुल्क · आपकी सुविधा के समय</p>
+          <p>15 मिनट · व्यक्तिगत · आपकी सुविधा के समय</p>
           <a href="#form" className="md-btn md-btn-haldi">
-            निःशुल्क बातचीत बुक करें →
+            Appointment लें →
           </a>
           <p className="md-attrib">
             Prakriti Path · By Amresh Kumar Rudra · <a href="/margdarshan">सभी कार्यक्रम देखें</a>
