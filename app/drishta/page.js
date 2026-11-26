@@ -1,17 +1,17 @@
 import "../margdarshan/margdarshan.css";
 import "../drishta.css";
-import { drishta, ORG_TYPES, SERVICES, BY_SECTOR, METHOD, REPORT, DIGITAL } from "@/data/drishta";
+import { drishta, ORG_TYPES, SERVICES, BY_SECTOR, METHOD, REPORT, DIGITAL, PRESTART } from "@/data/drishta";
 import DrishtaForm from "@/components/DrishtaForm";
 import { PurposeButton, WhatsAppButton } from "@/components/DrishtaActions";
 
 export const metadata = {
   title: "प्रकृति पथ – दृष्टा | संस्था का अवलोकन, मूल्यांकन और विकास योजना — Organizational Assessment",
   description:
-    "स्कूल, कॉलेज, NGO, Trust, अस्पताल, कंपनी और सरकारी प्रोजेक्ट के लिए निष्पक्ष संस्थागत अवलोकन, मूल्यांकन, लागत अनुकूलन, HR, तकनीक और विकास योजना। संस्था को बदलने से पहले, उसे समझिए। — Amresh Kumar Rudra",
+    "स्कूल, कॉलेज, NGO, Trust, अस्पताल, कंपनी और सरकारी प्रोजेक्ट के लिए निष्पक्ष संस्थागत अवलोकन, मूल्यांकन, लागत अनुकूलन, HR, तकनीक और विकास योजना। संस्था चलाने से पहले, उसे समझिए। — Amresh Kumar Rudra",
   alternates: { canonical: "https://prakritipath.org/drishta" },
   openGraph: {
     title: "प्रकृति पथ – दृष्टा · Organizational Observation & Development",
-    description: "संस्था को बदलने से पहले, उसे समझिए। निष्पक्ष अवलोकन, तथ्य-आधारित मूल्यांकन और व्यावहारिक विकास योजना।",
+    description: "संस्था चलाने से पहले, उसे समझिए। निष्पक्ष अवलोकन, तथ्य-आधारित मूल्यांकन और व्यावहारिक विकास योजना।",
     url: "https://prakritipath.org/drishta",
     siteName: "Prakriti Path",
     locale: "hi_IN",
@@ -68,6 +68,9 @@ export default function DrishtaPage() {
                 Consultation के लिए संपर्क करें
               </PurposeButton>
             </div>
+            <p className="dr-pre-hint">
+              🌱 नया काम शुरू करने वाले हैं? <a href="#nayi-shuruaat">पैसा लगाने से पहले समझिए →</a>
+            </p>
             <p className="dr-motto serif">“{drishta.motto}”</p>
           </div>
           <Eye />
@@ -119,6 +122,49 @@ export default function DrishtaPage() {
           </div>
           <div className="dr-inline-cta">
             <PurposeButton purpose="assessment">अपनी संस्था का मूल्यांकन करवाएँ →</PurposeButton>
+          </div>
+        </div>
+      </section>
+
+      {/* ── नई शुरुआत से पहले ── */}
+      <section className="md-sec dr-pre" id="nayi-shuruaat">
+        <div className="md-wrap">
+          <p className="md-eyebrow">नई शुरुआत से पहले</p>
+          <h2 className="md-h2 serif">{PRESTART.motto}</h2>
+          <p className="md-lead dr-pre-lead">
+            कोई नई संस्था, व्यवसाय या प्रोजेक्ट शुरू करने में <b>मेहनत, समय और पूँजी</b> लगती है। एक बार पैसा लग जाए तो
+            ग़लती सुधारना महँगा पड़ता है। इसलिए शुरुआत से पहले हम आपकी योजना को एक निष्पक्ष दृष्टा की तरह देखते हैं — ताकि
+            आप सोच-समझकर निर्णय ले सकें।
+          </p>
+          <div className="dr-pre-grid">
+            <article className="dr-pre-card">
+              <h3 className="serif">किसके लिए</h3>
+              <ul>
+                {PRESTART.for.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="dr-pre-card">
+              <h3 className="serif">हम क्या समझेंगे</h3>
+              <ul>
+                {PRESTART.study.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="dr-pre-card dr-pre-gets">
+              <h3 className="serif">आपको क्या मिलेगा</h3>
+              <ul>
+                {PRESTART.gets.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+          <p className="md-small dr-note">{PRESTART.note}</p>
+          <div className="dr-inline-cta">
+            <PurposeButton purpose="prestart">शुरुआत से पहले अपनी योजना दिखाएँ →</PurposeButton>
           </div>
         </div>
       </section>
@@ -269,7 +315,8 @@ export default function DrishtaPage() {
             </p>
             <ul className="dr-purposes">
               <li>🔍 Request Organizational Assessment</li>
-              <li>🤝 Book One-to-One Consultation</li>
+              <li>🤝 One-to-One Consultation — Appointment लें</li>
+              <li>🌱 नई शुरुआत से पहले — Pre-Start Study</li>
               <li>💻 Request Software Demo</li>
               <li>🧩 Discuss a New Project</li>
               <li>🔭 Become an Observer / Consultant</li>
@@ -292,7 +339,7 @@ export default function DrishtaPage() {
               अपनी संस्था का मूल्यांकन करवाएँ
             </PurposeButton>
             <PurposeButton purpose="consultation" className="md-btn md-btn-ghost">
-              Consultation Book करें
+              Consultation — Appointment लें
             </PurposeButton>
             <WhatsAppButton place="drishta_final" className="md-btn md-btn-ghost">
               हमसे संपर्क करें
