@@ -24,6 +24,7 @@ export const ORG_TYPES = [
   { key: "pilot", icon: "🧪", title: "Pilot Projects", text: "प्रोजेक्ट की कार्यप्रणाली, सीख और बड़े स्तर पर विस्तार की योजना।" },
   { key: "social", icon: "🌱", title: "Social Organizations", text: "स्वयंसेवक प्रबंधन, संवाद व्यवस्था और सामाजिक प्रभाव बढ़ाने के उपाय।" },
   { key: "small", icon: "🏪", title: "Small Businesses", text: "दैनिक संचालन, खर्च, ग्राहक अनुभव और छोटे-छोटे सुधारों से बड़ा लाभ।" },
+  { key: "newventure", icon: "🌱", title: "नई शुरुआत (शुरू होने से पहले)", text: "नया व्यवसाय, स्कूल, NGO, दुकान, फ़ैक्टरी या प्रोजेक्ट — पैसा लगाने से पहले योजना की निष्पक्ष जाँच।" },
   { key: "enterprise", icon: "🏭", title: "Large Enterprises", text: "बहु-विभागीय विश्लेषण, Automation, जोखिम आकलन और दीर्घकालिक रणनीति।" },
 ];
 
@@ -116,7 +117,51 @@ export const SERVICES = [
       "5–10 Year Vision",
     ],
   },
+  {
+    key: "prestart",
+    tag: "G",
+    title: "Pre-Start / Pre-Investment Study",
+    hi: "नई शुरुआत से पहले — निवेश से पहले समझ",
+    points: [
+      "योजना, स्थान और माँग की जाँच",
+      "लागत, पूँजी और आमदनी का व्यावहारिक अनुमान",
+      "जोखिम और बचाव के उपाय",
+      "शुरू करें / बदलें / रुकें — स्पष्ट सुझाव",
+      "Pre-Start Report और 90-Day Start Plan",
+    ],
+  },
 ];
+
+// 5-ख. नई शुरुआत से पहले — पैसा लगाने से पहले समझिए
+export const PRESTART = {
+  motto: "पैसा लगाने से पहले, उसे समझिए।",
+  for: [
+    "नया व्यवसाय, दुकान या फ़ैक्टरी",
+    "नया स्कूल, कोचिंग या कॉलेज",
+    "नया अस्पताल, क्लिनिक या लैब",
+    "नया NGO, Trust या सामाजिक प्रोजेक्ट",
+    "Franchise या साझेदारी (Partnership)",
+    "मौजूदा काम का विस्तार — नई शाखा या नया विभाग",
+  ],
+  study: [
+    "विचार और उद्देश्य की स्पष्टता — क्यों और किसके लिए",
+    "स्थान, ज़रूरत और माँग की ज़मीनी जाँच",
+    "कुल लागत, पूँजी और खर्च का अनुमान",
+    "आमदनी कब से और कितनी — व्यावहारिक अनुमान",
+    "टीम, लोग और ज़िम्मेदारियाँ",
+    "जोखिम, कमज़ोर कड़ियाँ और बचाव के उपाय",
+    "ज़रूरी अनुमतियों और काग़ज़ों की सूची",
+  ],
+  gets: [
+    "Pre-Start Report — योजना की ताक़त और कमज़ोरियाँ",
+    "स्पष्ट सुझाव: अभी शुरू करें / बदलाव करके शुरू करें / रुककर तैयारी करें",
+    "शुरुआती बजट और पूँजी की रूपरेखा",
+    "छोटे स्तर से शुरू करने (Pilot) का विकल्प",
+    "पहले 90 दिनों की कार्य योजना",
+  ],
+  note:
+    "यह रिपोर्ट आपके निर्णय में सहायता के लिए है — लाभ की गारंटी नहीं। अंतिम निर्णय आपका होगा; क़ानूनी और टैक्स से जुड़े विषयों पर संबंधित विशेषज्ञ की सलाह भी लें।",
+};
 
 // 6. अलग-अलग संस्थाओं को मिलने वाली सेवाएँ
 export const BY_SECTOR = [
@@ -219,14 +264,15 @@ export const DIGITAL = [
   { icon: "🖥️", title: "Screen Sharing", available: false },
   { icon: "✏️", title: "Interactive Whiteboard", available: false },
   { icon: "📝", title: "Campaign Registration", available: true, link: "/one-bowl" },
-  { icon: "📅", title: "Online Session Booking", available: true, link: "/margdarshan" },
+  { icon: "📅", title: "Online Appointment", available: true, link: "/margdarshan" },
 ];
 
 // 10. Customer Engagement — फॉर्म में "आप क्या चाहते हैं?"
 export const PURPOSES = [
   { key: "assessment", label: "Request Organizational Assessment", hi: "संस्था का मूल्यांकन" },
-  { key: "consultation", label: "Book One-to-One Consultation", hi: "व्यक्तिगत परामर्श" },
+  { key: "consultation", label: "One-to-One Consultation — Appointment", hi: "व्यक्तिगत परामर्श" },
   { key: "demo", label: "Request Software Demo", hi: "Software Demo" },
+  { key: "prestart", label: "Pre-Start Study — Before Investing", hi: "नई शुरुआत से पहले समझ" },
   { key: "project", label: "Discuss a New Project", hi: "नए प्रोजेक्ट पर चर्चा" },
   { key: "observer", label: "Become an Observer / Consultant", hi: "Observer / Consultant बनें" },
 ];
