@@ -4,7 +4,7 @@
 export const drishta = {
   name: "प्रकृति पथ – दृष्टा",
   en: "Organizational Observation & Development",
-  motto: "संस्था को बदलने से पहले, उसे समझिए।",
+  motto: "संस्था चलाने से पहले, उसे समझिए।",
   by: "Amresh Kumar Rudra",
   whatsapp: "918797617430",
 };
