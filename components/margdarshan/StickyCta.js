@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 // मोबाइल पर नीचे का बटन — तभी दिखे जब फॉर्म स्क्रीन पर न हो
-export default function StickyCta({ children = "निःशुल्क 15 मिनट की बातचीत बुक करें →" }) {
+export default function StickyCta({ children = "15 मिनट की बातचीत — Appointment लें →" }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {

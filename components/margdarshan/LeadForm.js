@@ -5,7 +5,7 @@ import { contact } from "@/data/margdarshan";
 import { rpc, cleanPhone, validPhone, errorText, isConfigured } from "@/lib/oneBowl";
 import { captureUtm, trackLead } from "@/lib/track";
 
-// Facebook ads से आने वालों के लिए छोटा, तेज़ फॉर्म — निःशुल्क 15 मिनट की बातचीत
+// Facebook ads से आने वालों के लिए छोटा, तेज़ फॉर्म — 15 मिनट की बातचीत का Appointment
 const TOPICS = ["मन की उलझन", "डर / चिंता", "रिश्ते", "करियर / दिशा", "अपनी प्रकृति जानना", "अन्य"];
 const TIMES = ["सुबह", "दोपहर", "शाम", "कभी भी"];
 
@@ -55,13 +55,13 @@ export default function LeadForm() {
   if (status === "done" && result) {
     const wa = contact.whatsapp
       ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-          `नमस्ते 🙏 मैंने निःशुल्क मार्गदर्शन बातचीत बुक की है। आवेदन संख्या: ${result.enquiry_no}`
+          `नमस्ते 🙏 मैंने मार्गदर्शन बातचीत के लिए Appointment का अनुरोध भेजा है। आवेदन संख्या: ${result.enquiry_no}`
         )}`
       : "";
     return (
       <div className="md-card md-done gd-form" id="form">
         <div className="md-done-icon">🪷</div>
-        <h3 className="serif">धन्यवाद, {result.name}! आपकी बातचीत बुक हो गई।</h3>
+        <h3 className="serif">धन्यवाद, {result.name}! आपका Appointment अनुरोध मिल गया।</h3>
         <p>आवेदन संख्या:</p>
         <div className="md-id">{result.enquiry_no}</div>
         <p className="md-small">24 घंटों में हमारी टीम आपको फ़ोन या WhatsApp करके समय तय करेगी।</p>
@@ -82,8 +82,8 @@ export default function LeadForm() {
 
   return (
     <form className="md-card gd-form" id="form" onSubmit={submit} noValidate>
-      <p className="gd-form-title serif">निःशुल्क 15 मिनट की बातचीत बुक करें</p>
-      <p className="gd-form-sub">कोई शुल्क नहीं · कोई दबाव नहीं · पूरी गोपनीयता</p>
+      <p className="gd-form-title serif">15 मिनट की बातचीत — Appointment लें</p>
+      <p className="gd-form-sub">कोई दबाव नहीं · पूरी गोपनीयता · आपकी सुविधा का समय</p>
 
       <div className="gd-fields">
         <label>
@@ -149,10 +149,10 @@ export default function LeadForm() {
       {status === "error" && <p className="md-error">{msg}</p>}
 
       <button className="md-btn md-btn-haldi gd-submit" type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "बुक हो रहा है…" : "निःशुल्क बातचीत बुक करें →"}
+        {status === "sending" ? "भेजा जा रहा है…" : "Appointment लें →"}
       </button>
       <p className="gd-privacy">
-        बुक करके आप सहमति देते हैं कि प्रकृति पथ इस बातचीत के लिए आपसे संपर्क करे।{" "}
+        फॉर्म भेजकर आप सहमति देते हैं कि प्रकृति पथ इस बातचीत के लिए आपसे संपर्क करे।{" "}
         <a href="/privacy">गोपनीयता नीति</a>
       </p>
     </form>

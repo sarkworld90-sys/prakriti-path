@@ -24,7 +24,7 @@ export default function ProgramCards() {
             <p>{p.for} — {p.points.join(" · ")}</p>
           </div>
           <button type="button" className="md-btn md-btn-haldi" onClick={() => chooseProgram(p.key)}>
-            निःशुल्क बातचीत बुक करें →
+            Appointment लें →
           </button>
         </div>
       ))}
@@ -58,9 +58,9 @@ export default function ProgramCards() {
               </a>
             )}
             <div className="md-program-foot">
-              <span className="md-fee">{feeLabel(p)}</span>
+              {p.price ? <span className="md-fee">{feeLabel(p)}</span> : <span />}
               <button type="button" className="md-btn md-btn-soft" onClick={() => chooseProgram(p.key)}>
-                बुक करें →
+                Appointment लें →
               </button>
             </div>
           </article>

@@ -139,10 +139,10 @@ export default function PrakritiQuiz() {
           </p>
           <div className="md-cta">
             <a href="/margdarshan?program=prakriti&src=quiz#book" className="md-btn md-btn-primary">
-              “अपनी प्रकृति जानें” सत्र बुक करें →
+              “अपनी प्रकृति जानें” सत्र — Appointment लें →
             </a>
             <a href="/margdarshan?program=free_call&src=quiz#book" className="md-btn md-btn-ghost">
-              पहले 15 मिनट निःशुल्क बात करें
+              पहले 15 मिनट बात करें
             </a>
           </div>
           <div className="md-cta">

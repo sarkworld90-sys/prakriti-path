@@ -52,7 +52,7 @@ export default function BookingForm() {
     setForm((f) => ({
       ...f,
       program: key,
-      // केवल एक तरीका हो (जैसे निःशुल्क बातचीत = online) तो अपने-आप चुनें
+      // केवल एक तरीका हो (जैसे पहली बातचीत = online) तो अपने-आप चुनें
       mode: prog?.modes.length === 1 ? prog.modes[0] : f.mode === "offline" && !prog?.modes.includes("offline") ? "" : f.mode,
     }));
   }
@@ -129,7 +129,7 @@ export default function BookingForm() {
         ) : (
           <p className="md-small">
             प्रकृति पथ की टीम 24–48 घंटों में आपसे संपर्क करके
-            {prog?.free ? " आपकी निःशुल्क बातचीत का समय तय करेगी।" : " समय, तरीका और शुल्क तय करेगी।"}
+            {prog?.free ? " आपके Appointment का समय तय करेगी।" : " Appointment का समय और तरीका तय करेगी।"}
           </p>
         )}
         {wa && (
